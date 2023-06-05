@@ -1,19 +1,25 @@
-.text-area {
+.input-area {
     margin: 24px 0;
 }
 
-.text-area label {
+.input-area label {
     display: block;
     margin-bottom: 8px;
     font-size: 24px;
 }
 
-.text-area input {
+.input-area input {
     background-color: #FFF;
     box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.06);
+    border-radius: 0px;
     width: 100%;
     border: none;
     font-size: 24px;
     padding: 24px;
     box-sizing: border-box;
+}
+
+.input-area input[type=color]{
+    height: 40px;
+    padding: 5px 24px;
 }

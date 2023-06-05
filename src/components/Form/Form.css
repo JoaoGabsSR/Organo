@@ -1,13 +1,21 @@
-.formulary {
+.formulary-container {
     display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
     justify-content: center;
-    margin: 80px 0;
+    margin: 80px 50px;
 }
 
-.formulary form {
+.formulary-container .formulary {
     max-width: 80%;
-    background-color: #F2F2F2;
+    background: #F7F7F7;
+    box-shadow: 7px 7px 15px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
+    flex: 1;
     padding: 36px 64px;
-    box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.formulary-container .formulary h2 {
+    font-weight: 400;
+    font-size: 32px;
 }
