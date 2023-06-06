@@ -4,7 +4,7 @@ import DropDown from "../DropDown";
 import Button from "../Button";
 import { useState } from "react";
 
-const Form = ({ onCollaboratorAdded, teams, createNewTeam }) => {
+const Form = ({ onCollaboratorAdded, teams, createNewTeam, visibility }) => {
     const [name, setName] = useState('');
     const [job, setJob] = useState('');
     const [image, setImage] = useState('');
@@ -28,7 +28,7 @@ const Form = ({ onCollaboratorAdded, teams, createNewTeam }) => {
 
     return (
         <section className="formulary-container">
-            <form className="formulary" onSubmit={onSave}>
+            <form className="formulary" onSubmit={onSave} style={{ display: visibility }}>
                 <h2>Preencha os dados para adicionar os colaboradores</h2>
                 <InputArea
                   label="Nome" 
@@ -62,7 +62,8 @@ const Form = ({ onCollaboratorAdded, teams, createNewTeam }) => {
             <form className="formulary" onSubmit={(event) => {
               event.preventDefault();
               createNewTeam({ name: teamName, color: teamColor })
-            }}>
+            }} style={{ display: visibility }}
+            >
                 <h2>Preencha os dados para adicionar um novo time</h2>
                 <InputArea
                   label="Nome do Time" 

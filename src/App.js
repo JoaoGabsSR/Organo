@@ -1,9 +1,11 @@
-import { useState } from 'react';
 import Banner from './components/Banner';
 import Form from './components/Form';
 import Team from './components/Team';
 import Footer from './components/Footer';
+import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { MdAssignmentAdd } from 'react-icons/md';
+import "./App.css";
 
 function App() {
   const [teams, setTeams] = useState([
@@ -43,15 +45,16 @@ function App() {
         color: '#FF8A29'
       }
     ]);
+  const [collaborators, setCollaborator] = useState([]);
+  const [visibility, setVisibility] = useState('');
     
-    const [collaborators, setCollaborator] = useState([]);
-    
-    const onNewCollaboratorAdded = (collaborator) => {
-      setCollaborator([...collaborators, collaborator]);
-    }
-    
-    const delCollaborator = (id) => {
-    setCollaborator(collaborators.filter(collaborator => collaborator.id !== id));
+  
+  const onNewCollaboratorAdded = (collaborator) => {
+    setCollaborator([...collaborators, collaborator]);
+  }
+  
+  const delCollaborator = (id) => {
+  setCollaborator(collaborators.filter(collaborator => collaborator.id !== id));
   }
 
   const changeTeamColor = (color, id) => {
@@ -73,6 +76,10 @@ function App() {
         return collaborator;
     }));
   }
+
+  const changeFormVisibility = () => {
+    visibility === '' ? setVisibility('none') : setVisibility('');
+  }
   
   return (
     <div className="App">
@@ -80,7 +87,8 @@ function App() {
       <Form 
         createNewTeam={createNewTeam}
         teams={teams.map(team => team.name)} 
-        onCollaboratorAdded={collaborator => onNewCollaboratorAdded(collaborator)} 
+        onCollaboratorAdded={collaborator => onNewCollaboratorAdded(collaborator)}
+        visibility={visibility} 
       />
       
       {teams.map((team, i) => 
@@ -96,6 +104,7 @@ function App() {
         />
       )}
 
+      <MdAssignmentAdd size={60} onClick={changeFormVisibility} className='change-visiblity'/>
       <Footer />
     </div>
   );
